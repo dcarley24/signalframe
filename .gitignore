@@ -1,0 +1,24 @@
+    # Python specific files
+    __pycache__/
+    *.pyc
+    *.pyo
+    *.pyd
+    .Python
+    env/
+    venv/
+    *.egg-info/
+    .mypy_cache/
+
+    # Database file
+    database.db
+
+    # Uploads folder (where PCAPs and CSVs are saved)
+    uploads/
+
+    # Logs
+    *.log
+    nohup.out
+
+    # Specific temporary files from simulations
+    simulated_output.csv
+    sample_complex_flows.pcap # if you generate it in the project root
