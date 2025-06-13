@@ -1,94 +1,115 @@
-SignalFrame: Security Operations Playground
+# SignalFrame: Security Operations Playground
+
 SignalFrame (formerly SecOps Playground) is a lightweight, Flask-based web application designed to help you quickly triage and analyze security-related data, specifically CSV-formatted logs and PCAP network captures. It provides a simple, intuitive interface to ingest data, identify potential issues, and visualize network flows without the complexity of traditional security tools.
 
 The primary goal of SignalFrame is to make initial security assessment (triage) of "weird-looking" logs or network traffic straightforward, even for non-security experts.
 
-Features
-Log Ingestion (CSV): Upload CSV log files with intelligent header matching for common fields (IP, action, timestamp, destination port).
+## Features
 
-PCAP Analysis & Flow Visualization: Upload PCAP files for automatic parsing of network packets into aggregated flows. Visualize these flows as an interactive force-directed graph to quickly understand network communication patterns.
+* **Log Ingestion (CSV)**: Upload CSV log files with intelligent header matching for common fields (IP, action, timestamp, destination port).
 
-Dataset Management: Create, switch between, and delete isolated datasets for different analysis scenarios, ensuring your data remains organized.
+* **PCAP Analysis & Flow Visualization**: Upload PCAP files for automatic parsing of network packets into aggregated flows. Visualize these flows as an interactive force-directed graph to quickly understand network communication patterns.
 
-Simulated Data Generation: Generate synthetic security events (e.g., login failures, DoS attacks, port scans) to populate your active dataset for testing and demonstration.
+* **Dataset Management**: Create, switch between, and delete isolated datasets for different analysis scenarios, ensuring your data remains organized.
 
-Basic Alerting: Automatically detect simple alert conditions based on log volume.
+* **Simulated Data Generation**: Generate synthetic security events (e.g., login failures, DoS attacks, port scans) to populate your active dataset for testing and demonstration.
 
-Automated Playbooks: Simulate automated responses (e.g., blocking suspicious IPs, escalating suspicious activity, detecting port scans) based on predefined rules.
+* **Basic Alerting**: Automatically detect simple alert conditions based on log volume.
 
-Intuitive Web Interface: A clean, responsive web interface for viewing logs, alerts, playbook actions, and network flows.
+* **Automated Playbooks**: Simulate automated responses (e.g., blocking suspicious IPs, escalating suspicious activity, detecting port scans) based on predefined rules.
 
-Getting Started
+* **Intuitive Web Interface**: A clean, responsive web interface for viewing logs, alerts, playbook actions, and network flows.
+
+## Getting Started
+
 These instructions will get your SignalFrame application up and running on your Ubuntu server.
 
-Prerequisites
-Python 3.10+: Ensure Python 3.10 or newer is installed on your Ubuntu server.
+### Prerequisites
 
-pip: Python package installer.
+* **Python 3.10+**: Ensure Python 3.10 or newer is installed on your Ubuntu server.
 
-venv: Python virtual environment module (usually comes with Python 3).
+* **`pip`**: Python package installer.
 
-git: For cloning the repository.
+* **`venv`**: Python virtual environment module (usually comes with Python 3).
 
-ffmpeg, v4l-utils, pulseaudio, alsa-utils, xvfb, x11-utils, libgl1: Required for potential screen/webcam/audio capture features (though not actively used in the current core functionality, they are common dependencies in a development environment for similar projects).
+* **`git`**: For cloning the repository.
 
-sudo apt update && sudo apt install -y \
-    ffmpeg \
-    v4l-utils \
-    pulseaudio \
-    alsa-utils \
-    xvfb \
-    x11-utils \
-    python3-venv \
-    libgl1 \
-    git \
-    git-filter-repo # Needed if you need to clean Git history
+* **`ffmpeg`**, `v4l-utils`, `pulseaudio`, `alsa-utils`, `xvfb`, `x11-utils`, `libgl1`: Required for potential screen/webcam/audio capture features (though not actively used in the current core functionality, they are common dependencies in a development environment for similar projects).
 
-Installation
-Clone the Repository:
+    ```bash
+    sudo apt update && sudo apt install -y \
+        ffmpeg \
+        v4l-utils \
+        pulseaudio \
+        alsa-utils \
+        xvfb \
+        x11-utils \
+        python3-venv \
+        libgl1 \
+        git \
+        git-filter-repo # Needed if you need to clean Git history
+    ```
 
-git clone https://github.com/dcarley24/signalframe.git
-cd signalframe
+### Installation
 
-Create and Activate a Virtual Environment:
-It's highly recommended to use a virtual environment to manage dependencies.
+1.  **Clone the Repository**:
 
-python3 -m venv venv
-source venv/bin/activate
+    ```bash
+    git clone [https://github.com/dcarley24/signalframe.git](https://github.com/dcarley24/signalframe.git)
+    cd signalframe
+    ```
 
-(You'll see (venv) in your terminal prompt, indicating the environment is active.)
+2.  **Create and Activate a Virtual Environment**:
+    It's highly recommended to use a virtual environment to manage dependencies.
 
-Install Python Dependencies:
+    ```bash
+    python3 -m venv venv
+    source venv/bin/activate
+    ```
 
-pip install Flask scapy
-# If you later encounter specific missing packages, install them:
-# pip install requests pandas numpy opencv-python Pillow torch transformers
-# (based on your pythondev report, you have many of these already)
+    (You'll see `(venv)` in your terminal prompt, indicating the environment is active.)
 
-Set the Flask Secret Key:
-For security, Flask requires a secret key. This should be a long, random string. Do NOT hardcode this in app.py for production.
-Generate a random key (e.g., using python3 -c 'import os; print(os.urandom(24))') and set it as an environment variable.
-To make it persistent, add this line to your ~/.bashrc file:
+3.  **Install Python Dependencies**:
 
-echo 'export FLASK_SECRET_KEY="YOUR_GENERATED_RANDOM_KEY_HERE"' >> ~/.bashrc
-source ~/.bashrc
+    ```bash
+    pip install Flask scapy
+    # If you later encounter specific missing packages, install them:
+    # pip install requests pandas numpy opencv-python Pillow torch transformers
+    # (based on your pythondev report, you have many of these already)
+    ```
 
-(Replace YOUR_GENERATED_RANDOM_KEY_HERE with your actual key.)
+4.  **Set the Flask Secret Key**:
+    For security, Flask requires a secret key. This should be a long, random string. **Do NOT hardcode this in `app.py` for production.**
+    Generate a random key (e.g., using `python3 -c 'import os; print(os.urandom(24))'`) and set it as an environment variable.
+    To make it persistent, add this line to your `~/.bashrc` file:
 
-Running the Application
+    ```bash
+    echo 'export FLASK_SECRET_KEY="YOUR_GENERATED_RANDOM_KEY_HERE"' >> ~/.bashrc
+    source ~/.bashrc
+    ```
+
+    (Replace `YOUR_GENERATED_RANDOM_KEY_HERE` with your actual key.)
+
+### Running the Application
+
 For a persistent background process on your Ubuntu server:
 
+```bash
 # Ensure you are in the signalframe directory and virtual environment is active
 # source venv/bin/activate # If not already active
 
 nohup python3 app.py > app.log 2>&1 &
+```
 
-This will start the Flask application on http://0.0.0.0:5002. You can then access it from your web browser using your server's IP address (e.g., http://your_server_ip:5002).
+This will start the Flask application on `http://0.0.0.0:5002`. You can then access it from your web browser using your server's IP address (e.g., `http://your_server_ip:5002`).
 
-Database Initialization
-The app.py script automatically initializes the SQLite database.db and necessary tables (logs, alerts, playbook_actions, flows, datasets) upon its first run if the database file does not exist.
+### Database Initialization
 
-Project Structure
+The `app.py` script automatically initializes the SQLite `database.db` and necessary tables (`logs`, `alerts`, `playbook_actions`, `flows`, `datasets`) upon its first run if the database file does not exist.
+
+### Project Structure
+
+```
 signalframe/
 ├── templates/                 # HTML templates (Jinja2)
 │   ├── base.html              # Base layout and shared CSS
@@ -107,20 +128,24 @@ signalframe/
 ├── database.db                # SQLite database (ignored by Git)
 ├── .gitignore                 # Specifies files/folders to ignore in Git
 └── README.md                  # This file
+```
 
-Usage
-Upload Logs or PCAPs: Navigate to the "Logs" or "PCAP Upload" sections to ingest your data.
+## Usage
 
-Simulate Traffic: Use the "Simulate" page to generate synthetic data for testing.
+1.  **Upload Logs or PCAPs**: Navigate to the "Logs" or "PCAP Upload" sections to ingest your data.
 
-View Flows: Go to the "Flows" page to see network communication visualized. You can select specific PCAP datasets from a dropdown.
+2.  **Simulate Traffic**: Use the "Simulate" page to generate synthetic data for testing.
 
-Check Alerts & Playbooks: Monitor detected security alerts and automated actions on their respective pages.
+3.  **View Flows**: Go to the "Flows" page to see network communication visualized. You can select specific PCAP datasets from a dropdown.
 
-Manage Datasets: Organize your analysis by creating, switching, or deleting datasets.
+4.  **Check Alerts & Playbooks**: Monitor detected security alerts and automated actions on their respective pages.
 
-Contributing
+5.  **Manage Datasets**: Organize your analysis by creating, switching, or deleting datasets.
+
+## Contributing
+
 SignalFrame is a personal project, but contributions are welcome! Feel free to fork the repository, make improvements, and submit pull requests.
 
-License
+## License
+
 This project is open-source. See the LICENSE file for details (if you plan to add one).
