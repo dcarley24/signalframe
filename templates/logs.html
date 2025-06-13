@@ -1,0 +1,133 @@
+{% extends "base.html" %} {% block title %}Logs - SecOps Playground{% endblock
+%} {% block content %}
+<h1 class="text-3xl font-bold mb-6">Logs</h1>
+
+<div class="bg-gray-800 p-6 rounded-lg shadow-md mb-8">
+    <h2 class="text-xl font-semibold mb-4 text-blue-300">
+        Upload Log File (CSV)
+    </h2>
+    <form
+        method="POST"
+        enctype="multipart/form-data"
+        action="{{ url_for('logs') }}"
+        class="space-y-4"
+    >
+        <div>
+            <label
+                for="logfile"
+                class="block text-sm font-medium text-gray-300 mb-1"
+                >Select CSV Log File:</label
+            >
+            <input
+                type="file"
+                id="logfile"
+                name="logfile"
+                accept=".csv"
+                class="w-full p-2 rounded-md bg-gray-700 border border-gray-600 focus:ring-blue-500 focus:border-blue-500 text-gray-200 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-500 file:text-white hover:file:bg-blue-600 cursor-pointer"
+            />
+            <p class="mt-1 text-sm text-gray-400">
+                Supported columns: `ip`, `source_ip`, `client_ip` (for IP);
+                `action`, `event`, `event_type` (for Action); `timestamp`,
+                `time`, `datetime` (for Timestamp); `dst_port`, `port`,
+                `destination_port` (for Destination Port).
+            </p>
+        </div>
+        <button
+            type="submit"
+            class="px-6 py-2 bg-blue-600 text-white font-semibold rounded-md shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800"
+        >
+            Upload Log
+        </button>
+    </form>
+</div>
+
+<div class="bg-gray-800 p-6 rounded-lg shadow-md">
+    <h2 class="text-xl font-semibold mb-4 text-blue-300">
+        Recent Log Entries (Active Dataset)
+    </h2>
+    {% if logs %}
+    <div class="overflow-x-auto rounded-md border border-gray-700">
+        <table class="min-w-full divide-y divide-gray-700">
+            <thead class="bg-gray-700">
+                <tr>
+                    <th
+                        scope="col"
+                        class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider rounded-tl-md"
+                    >
+                        ID
+                    </th>
+                    <th
+                        scope="col"
+                        class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider"
+                    >
+                        IP
+                    </th>
+                    <th
+                        scope="col"
+                        class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider"
+                    >
+                        Action
+                    </th>
+                    <th
+                        scope="col"
+                        class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider"
+                    >
+                        Timestamp
+                    </th>
+                    <th
+                        scope="col"
+                        class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider"
+                    >
+                        Dst Port
+                    </th>
+                    <th
+                        scope="col"
+                        class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider rounded-tr-md"
+                    >
+                        Dataset
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="bg-gray-800 divide-y divide-gray-700">
+                {% for log in logs %}
+                <tr>
+                    <td
+                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-300"
+                    >
+                        {{ log[0] }}
+                    </td>
+                    <td
+                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-300"
+                    >
+                        {{ log[1] }}
+                    </td>
+                    <td
+                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-300"
+                    >
+                        {{ log[2] }}
+                    </td>
+                    <td
+                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-300"
+                    >
+                        {{ log[3] }}
+                    </td>
+                    <td
+                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-300"
+                    >
+                        {{ log[4] if log[4] is not none else 'N/A' }}
+                    </td>
+                    <td
+                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-300"
+                    >
+                        {{ log[5] }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <p class="text-gray-400">No logs found for the active dataset.</p>
+    {% endif %}
+</div>
+{% endblock %}

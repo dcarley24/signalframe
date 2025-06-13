@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}SecOps Playground{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a202c; /* Dark background */
+            color: #e2e8f0; /* Light text */
+        }
+        .container {
+            max-width: 90%;
+            margin: auto;
+            padding: 2rem;
+        }
+        h1 {
+            color: #63b3ed; /* Blue for headings */
+        }
+        .flash {
+            padding: 0.75rem 1.25rem;
+            margin-bottom: 1rem;
+            border: 1px solid transparent;
+            border-radius: 0.25rem;
+            font-weight: 500;
+        }
+        .flash.success {
+            background-color: #2f855a;
+            border-color: #38a169;
+            color: #fff;
+        }
+        .flash.danger {
+            background-color: #c53030;
+            border-color: #e53e3e;
+            color: #fff;
+        }
+        .flash.warning {
+            background-color: #d69e2e;
+            border-color: #f6e05e;
+            color: #fff;
+        }
+        .flash.info {
+            background-color: #3182ce;
+            border-color: #4299e1;
+            color: #fff;
+        }
+        /* Specific styles for forms and inputs */
+        input[type="text"],
+        input[type="number"],
+        input[type="file"],
+        select {
+            background-color: #2d3748; /* Darker gray for inputs */
+            border-color: #4a5568; /* Slightly lighter border */
+            color: #e2e8f0; /* Light text in inputs */
+        }
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        input[type="file"]:focus,
+        select:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.5); /* Blue glow on focus */
+            border-color: #4299e1;
+        }
+        button {
+            transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+        }
+        button:hover {
+            transform: translateY(-1px);
+        }
+        button:active {
+            transform: translateY(0);
+        }
+    </style>
+    {% block head_extra %}{% endblock %} {# For page-specific head content like D3.js in flows.html #}
+</head>
+<body class="bg-gray-900 text-gray-200">
+    <div class="container mx-auto p-8">
+        <nav class="flex flex-wrap justify-between items-center py-4 px-6 mb-8 bg-gray-800 rounded-lg shadow-md">
+            <div class="text-2xl font-bold text-blue-400 mb-2 md:mb-0">SecOps Playground</div>
+            <div class="flex flex-wrap justify-center md:justify-end gap-2">
+                <a href="{{ url_for('index') }}" class="text-gray-300 hover:text-blue-300 px-3 py-2 rounded-md transition-colors duration-200">Home</a>
+                <a href="{{ url_for('logs') }}" class="text-gray-300 hover:text-blue-300 px-3 py-2 rounded-md transition-colors duration-200">Logs</a>
+                <a href="{{ url_for('alerts') }}" class="text-gray-300 hover:text-blue-300 px-3 py-2 rounded-md transition-colors duration-200">Alerts</a>
+                <a href="{{ url_for('playbooks') }}" class="text-gray-300 hover:text-blue-300 px-3 py-2 rounded-md transition-colors duration-200">Playbooks</a>
+                <a href="{{ url_for('simulate') }}" class="text-gray-300 hover:text-blue-300 px-3 py-2 rounded-md transition-colors duration-200">Simulate</a>
+                <a href="{{ url_for('upload_pcap') }}" class="text-gray-300 hover:text-blue-300 px-3 py-2 rounded-md transition-colors duration-200">PCAP Upload</a>
+                <a href="{{ url_for('flows') }}" class="text-gray-300 hover:text-blue-300 px-3 py-2 rounded-md transition-colors duration-200">Flows</a>
+                <a href="{{ url_for('manage_datasets') }}" class="text-gray-300 hover:text-blue-300 px-3 py-2 rounded-md transition-colors duration-200">Datasets</a>
+            </div>
+        </nav>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="mb-4">
+                    {% for category, message in messages %}
+                        <div class="flash {{ category }} rounded-md shadow-sm">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <main>
+            {% block content %}{% endblock %} {# Page-specific content will go here #}
+        </main>
+    </div>
+    {% block scripts %}{% endblock %} {# For page-specific scripts #}
+</body>
+</html>

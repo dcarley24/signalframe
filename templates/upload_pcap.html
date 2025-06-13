@@ -1,0 +1,38 @@
+{% extends "base.html" %} {% block title %}Upload PCAP - SecOps Playground{%
+endblock %} {% block content %}
+<h1 class="text-3xl font-bold mb-6">Upload PCAP File</h1>
+
+<div class="bg-gray-800 p-6 rounded-lg shadow-md">
+    <h2 class="text-xl font-semibold mb-4 text-blue-300">
+        Upload & Analyze PCAP
+    </h2>
+    <form
+        method="POST"
+        enctype="multipart/form-data"
+        action="{{ url_for('upload_pcap') }}"
+        class="space-y-4"
+    >
+        <div>
+            <label
+                for="pcapfile"
+                class="block text-sm font-medium text-gray-300 mb-1"
+                >Select PCAP File (.pcap, .pcapng):</label
+            >
+            <input
+                type="file"
+                id="pcapfile"
+                name="pcapfile"
+                accept=".pcap,.pcapng"
+                required
+                class="w-full p-2 rounded-md bg-gray-700 border border-gray-600 focus:ring-blue-500 focus:border-blue-500 text-gray-200 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-500 file:text-white hover:file:bg-blue-600 cursor-pointer"
+            />
+        </div>
+        <button
+            type="submit"
+            class="px-6 py-2 bg-blue-600 text-white font-semibold rounded-md shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800"
+        >
+            Upload & Analyze
+        </button>
+    </form>
+</div>
+{% endblock %}

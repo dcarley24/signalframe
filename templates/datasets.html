@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}Manage Datasets - SecOps Playground{% endblock %}
+
+{% block content %}
+    <h1 class="text-3xl font-bold mb-6">Manage Datasets</h1>
+
+    <div class="bg-gray-800 p-6 rounded-lg shadow-md mb-8">
+        <h2 class="text-xl font-semibold mb-4 text-blue-300">Active Dataset: <span class="text-white">{{ current }}</span></h2>
+
+        <div class="space-y-6">
+            <!-- Create New Dataset -->
+            <div>
+                <h3 class="text-lg font-medium text-gray-300 mb-2">Create New Dataset</h3>
+                <form method="POST" action="{{ url_for('manage_datasets') }}" class="flex flex-wrap items-end gap-4">
+                    <input type="hidden" name="action" value="create">
+                    <input type="text" name="new_dataset" placeholder="New dataset name" required
+                           class="flex-grow p-2 rounded-md bg-gray-700 border border-gray-600 focus:ring-blue-500 focus:border-blue-500 text-gray-200">
+                    <button type="submit"
+                            class="px-6 py-2 bg-green-600 text-white font-semibold rounded-md shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-800">
+                        Create & Set Active
+                    </button>
+                </form>
+            </div>
+
+            <!-- Switch Active Dataset -->
+            <div>
+                <h3 class="text-lg font-medium text-gray-300 mb-2">Switch Active Dataset</h3>
+                <form method="POST" action="{{ url_for('manage_datasets') }}" class="flex flex-wrap items-end gap-4">
+                    <input type="hidden" name="action" value="switch">
+                    <select name="active"
+                            class="flex-grow p-2 rounded-md bg-gray-700 border border-gray-600 focus:ring-blue-500 focus:border-blue-500 text-gray-200">
+                        {% for ds in datasets %}
+                            <option value="{{ ds }}" {% if ds == current %}selected{% endif %}>{{ ds }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit"
+                            class="px-6 py-2 bg-blue-600 text-white font-semibold rounded-md shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800">
+                        Switch
+                    </button>
+                </form>
+            </div>
+
+            <!-- Delete Dataset -->
+            <div>
+                <h3 class="text-lg font-medium text-gray-300 mb-2">Delete Dataset</h3>
+                <form method="POST" action="{{ url_for('manage_datasets') }}" class="flex flex-wrap items-end gap-4" onsubmit="return confirm('Are you sure you want to delete this dataset and all its data? This cannot be undone.');">
+                    <input type="hidden" name="action" value="delete">
+                    <select name="delete"
+                            class="flex-grow p-2 rounded-md bg-gray-700 border border-gray-600 focus:ring-blue-500 focus:border-blue-500 text-gray-200">
+                        {% for ds in datasets %}
+                            {% if ds != current %} {# Prevent deleting active dataset via dropdown #}
+                                <option value="{{ ds }}">{{ ds }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                    <button type="submit"
+                            class="px-6 py-2 bg-red-600 text-white font-semibold rounded-md shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-gray-800">
+                        Delete Selected
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+        <h2 class="text-xl font-semibold mb-4 text-blue-300">All Datasets</h2>
+        {% if datasets %}
+            <ul class="list-disc list-inside space-y-2">
+                {% for ds in datasets %}
+                    <li class="text-gray-300">{{ ds }} {% if ds == current %}<span class="text-blue-400 font-semibold">(Active)</span>{% endif %}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="text-gray-400">No datasets found.</p>
+        {% endif %}
+    </div>
+{% endblock %}
+.

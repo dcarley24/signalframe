@@ -1,0 +1,496 @@
+nohup: ignoring input
+ * Serving Flask app 'app'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.2.233:5002
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 407-804-551
+100.77.64.54 - - [04/Jun/2025 00:11:26] "GET / HTTP/1.1" 200 -
+100.77.64.54 - - [04/Jun/2025 00:11:26] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.108.216.113 - - [04/Jun/2025 08:58:26] "GET / HTTP/1.1" 200 -
+100.108.216.113 - - [04/Jun/2025 08:58:26] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.108.216.113 - - [04/Jun/2025 08:58:34] "GET /playbooks HTTP/1.1" 200 -
+100.108.216.113 - - [04/Jun/2025 08:58:34] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.108.216.113 - - [04/Jun/2025 08:58:39] "GET /alerts HTTP/1.1" 200 -
+100.108.216.113 - - [04/Jun/2025 08:58:39] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.108.216.113 - - [04/Jun/2025 08:58:40] "GET /alerts HTTP/1.1" 200 -
+100.108.216.113 - - [04/Jun/2025 08:58:40] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.108.216.113 - - [04/Jun/2025 08:58:46] "GET /simulate HTTP/1.1" 200 -
+100.108.216.113 - - [04/Jun/2025 08:58:46] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.108.216.113 - - [04/Jun/2025 08:58:49] "GET /upload_pcap HTTP/1.1" 200 -
+100.108.216.113 - - [04/Jun/2025 08:58:49] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.108.216.113 - - [04/Jun/2025 08:58:50] "GET /flows HTTP/1.1" 200 -
+100.108.216.113 - - [04/Jun/2025 08:58:50] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.108.216.113 - - [04/Jun/2025 08:58:51] "GET /flows_data HTTP/1.1" 200 -
+100.108.216.113 - - [04/Jun/2025 08:58:55] "GET /datasets HTTP/1.1" 200 -
+100.108.216.113 - - [04/Jun/2025 08:58:55] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.77.64.54 - - [07/Jun/2025 00:00:46] "GET / HTTP/1.1" 200 -
+100.77.64.54 - - [07/Jun/2025 00:00:51] "GET / HTTP/1.1" 200 -
+100.77.64.54 - - [07/Jun/2025 00:01:27] "GET / HTTP/1.1" 200 -
+100.77.64.54 - - [07/Jun/2025 00:01:29] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.77.64.54 - - [07/Jun/2025 00:01:30] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+100.108.216.113 - - [08/Jun/2025 12:47:53] "GET / HTTP/1.1" 200 -
+100.108.216.113 - - [08/Jun/2025 12:47:53] "GET /static/styles.css HTTP/1.1" 200 -
+100.108.216.113 - - [08/Jun/2025 12:47:53] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+100.108.216.113 - - [08/Jun/2025 12:48:06] "GET /playbooks HTTP/1.1" 200 -
+100.108.216.113 - - [08/Jun/2025 12:48:06] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.108.216.113 - - [08/Jun/2025 12:48:17] "GET /flows HTTP/1.1" 200 -
+100.108.216.113 - - [08/Jun/2025 12:48:17] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.108.216.113 - - [08/Jun/2025 12:48:18] "GET /flows_data HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 20:48:43] "GET / HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 20:48:43] "GET /static/styles.css HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 20:48:44] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+100.89.32.15 - - [12/Jun/2025 22:48:16] "GET / HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 22:48:16] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 22:48:24] "GET /playbooks HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 22:48:24] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 22:48:25] "GET /simulate HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 22:48:25] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 22:48:27] "GET /logs HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 22:48:27] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:00:26] "GET /playbooks HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:00:26] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:00:28] "GET /logs HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:00:28] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:00:29] "GET /playbooks HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:00:29] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:01:09] "GET /playbooks HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:01:09] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+ * Detected change in '/home/doug/secops_playground/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 407-804-551
+100.89.32.15 - - [12/Jun/2025 23:13:55] "GET /playbooks HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:13:55] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:13:57] "GET /logs HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:13:57] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:13:58] "GET /alerts HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:13:58] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:13:58] "GET /playbooks HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:13:58] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:13:59] "GET /flows HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:13:59] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:14:00] "GET /flows_data HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:14:01] "GET /flows?src_ip=192.168.1.10 HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:14:01] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:14:01] "GET /flows_data HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:14:04] "GET /flows?min_packets=1 HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:14:04] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:14:04] "GET /flows_data HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:14:12] "GET /flows?dst_ip=10.0.0.8 HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:14:12] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:14:12] "GET /flows_data HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:14:32] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:14:55] "GET /flows HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:14:55] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:14:55] "GET /flows_data HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:14:55] "GET /upload_pcap HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:14:55] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:14:56] "GET /flows HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:14:57] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:14:57] "GET /flows_data HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:14:57] "GET /datasets HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:14:57] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:14:58] "GET /playbooks HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:14:58] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:14:59] "GET /alerts HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:14:59] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:14:59] "GET /logs HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:14:59] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:15:02] "GET /logs HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:15:02] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:15:13] "GET /upload_pcap HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:15:13] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:15:14] "GET /flows HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:15:14] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:15:14] "GET /flows_data HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:15:16] "GET /flows?src_ip=192.168.1.11 HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:15:16] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:15:16] "GET /flows_data HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:15:18] "GET /flows?src_ip=192.168.1.11 HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:15:18] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:15:18] "GET /flows_data HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:15:22] "GET /flows?dst_ip=10.0.0.8 HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:15:22] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:15:22] "GET /flows_data HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:16:01] "GET /upload_pcap HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:16:01] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:16:45] "[32mPOST /upload_pcap HTTP/1.1[0m" 302 -
+100.89.32.15 - - [12/Jun/2025 23:16:45] "GET /upload_pcap HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:16:45] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:16:51] "GET /flows HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:16:51] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:16:51] "GET /flows_data HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:16:55] "GET /flows HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:16:55] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:16:55] "GET /flows_data HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:16:56] "GET /upload_pcap HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:16:56] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:16:57] "GET /flows HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:16:57] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:16:57] "GET /flows_data HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:16:58] "GET /flows?dst_ip=227.40.50.60 HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:16:58] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:16:58] "GET /flows_data HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:17:03] "GET /logs HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:17:03] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:17:18] "GET /flows HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:17:18] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:17:18] "GET /flows_data HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:17:22] "GET /flows?dst_ip=227.40.50.60 HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:17:22] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:17:23] "GET /flows_data HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:17:28] "GET /flows?min_packets=16 HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:17:28] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:17:28] "GET /flows_data HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:17:30] "GET /flows?min_packets=16 HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:17:30] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:17:30] "GET /flows_data HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:17:32] "GET /flows?protocol=UDP HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:17:32] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:17:32] "GET /flows_data HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:17:33] "GET /flows?protocol=UDP HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:17:33] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:17:33] "GET /flows_data HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:17:35] "GET /flows?dst_ip=227.40.50.60 HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:17:35] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:17:35] "GET /flows_data HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:18:37] "GET /upload_pcap HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:18:37] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:18:46] "[32mPOST /upload_pcap HTTP/1.1[0m" 302 -
+100.89.32.15 - - [12/Jun/2025 23:18:46] "GET /upload_pcap HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:18:46] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:18:50] "GET /logs HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:18:50] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:19:05] "GET /flows HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:19:05] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:19:05] "GET /flows_data HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:19:09] "GET /flows?dst_ip=127.0.0.1 HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:19:09] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:19:09] "GET /flows_data HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:19:18] "GET /flows?src_ip=&dst_ip=&protocol=&min_packets= HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:19:18] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:19:18] "GET /flows_data HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:19:33] "GET /logs HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:19:33] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:19:40] "GET /upload_pcap HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:19:40] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:19:41] "GET /flows HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:19:41] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:19:42] "GET /flows_data HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:20:09] "GET /alerts HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:20:09] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:20:30] "GET /flows HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:20:30] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:20:30] "GET /flows_data HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:20:38] "GET /flows?min_packets=23 HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:20:38] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:20:38] "GET /flows_data HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:20:43] "GET /flows?src_ip=127.0.0.1 HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:20:43] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:20:43] "GET /flows_data HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:20:45] "GET /flows?src_ip=127.0.0.1 HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:20:45] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:20:45] "GET /flows_data HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:20:51] "GET /flows?src_ip=&dst_ip=&protocol=&min_packets= HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:20:51] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:20:51] "GET /flows_data HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:21:13] "GET /upload_pcap HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:21:13] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:21:24] "[32mPOST /upload_pcap HTTP/1.1[0m" 302 -
+100.89.32.15 - - [12/Jun/2025 23:21:24] "GET /upload_pcap HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:21:24] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:21:27] "GET /flows HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:21:27] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:21:27] "GET /flows_data HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:21:40] "GET /alerts HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:21:40] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:21:41] "GET /alerts HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:21:41] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:21:42] "GET /alerts HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:21:42] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:21:43] "GET /playbooks HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:21:43] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:22:09] "GET /flows HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:22:09] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:22:09] "GET /flows_data HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:26:45] "GET /flows HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:26:45] "GET /flows_data HTTP/1.1" 200 -
+ * Detected change in '/home/doug/secops_playground/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 407-804-551
+100.89.32.15 - - [12/Jun/2025 23:38:18] "GET /flows HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:38:18] "GET /flows_data?dataset_name=pcap2 HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:38:27] "GET /flows?dataset_name=pcap2 HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:38:27] "GET /flows_data?dataset_name=pcap2 HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:38:29] "GET /flows?dataset_name=pcap2 HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:38:29] "GET /flows_data?dataset_name=pcap2 HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:38:58] "GET /simulate HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:38:59] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:39:03] "GET /upload_pcap HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:39:03] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:39:17] "[32mPOST /upload_pcap HTTP/1.1[0m" 302 -
+100.89.32.15 - - [12/Jun/2025 23:39:17] "GET /flows?dataset_name=pcap_Network_Join_Nokia_Mobile_20250612233914 HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:39:17] "GET /flows_data?dataset_name=pcap_Network_Join_Nokia_Mobile_20250612233914 HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:39:29] "GET /flows_data?dataset_name=pcap2 HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:39:38] "GET /flows?dataset_name=pcap_Network_Join_Nokia_Mobile_20250612233914&src_ip=&dst_ip=&protocol=&min_packets= HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:39:38] "GET /flows_data?dataset_name=pcap_Network_Join_Nokia_Mobile_20250612233914 HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:39:46] "GET /flows_data?dataset_name=pcap2 HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:39:46] "GET /flows?dataset_name=pcap2 HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:39:46] "GET /flows_data?dataset_name=pcap2 HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:40:01] "GET /upload_pcap HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:40:01] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:40:03] "GET /upload_pcap HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:40:03] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:40:13] "[32mPOST /upload_pcap HTTP/1.1[0m" 302 -
+100.89.32.15 - - [12/Jun/2025 23:40:13] "GET /flows?dataset_name=pcap_ndmp_20250612234011 HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:40:13] "GET /flows_data?dataset_name=pcap_ndmp_20250612234011 HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:43:00] "GET /upload_pcap HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:43:00] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [12/Jun/2025 23:43:09] "[32mPOST /upload_pcap HTTP/1.1[0m" 302 -
+100.89.32.15 - - [12/Jun/2025 23:43:09] "GET /flows?dataset_name=pcap_steam-ihs-discovery_20250612234307 HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:43:09] "GET /flows_data?dataset_name=pcap_steam-ihs-discovery_20250612234307 HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:50:59] "GET /logs HTTP/1.1" 200 -
+100.89.32.15 - - [12/Jun/2025 23:50:59] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [13/Jun/2025 00:46:22] "GET /logs HTTP/1.1" 200 -
+100.89.32.15 - - [13/Jun/2025 00:46:25] "GET /logs HTTP/1.1" 200 -
+100.89.32.15 - - [13/Jun/2025 00:46:26] "GET / HTTP/1.1" 200 -
+100.89.32.15 - - [13/Jun/2025 00:46:29] "GET / HTTP/1.1" 200 -
+100.89.32.15 - - [13/Jun/2025 00:46:31] "GET /alerts HTTP/1.1" 200 -
+100.89.32.15 - - [13/Jun/2025 00:46:32] "GET /playbooks HTTP/1.1" 200 -
+100.89.32.15 - - [13/Jun/2025 00:46:33] "GET /simulate HTTP/1.1" 200 -
+100.89.32.15 - - [13/Jun/2025 00:46:36] "GET /upload_pcap HTTP/1.1" 200 -
+100.89.32.15 - - [13/Jun/2025 00:46:39] "GET /flows HTTP/1.1" 200 -
+100.89.32.15 - - [13/Jun/2025 00:46:39] "GET /flows_data?dataset_name=pcap_steam-ihs-discovery_20250612234307 HTTP/1.1" 200 -
+100.89.32.15 - - [13/Jun/2025 00:46:41] "[35m[1mGET /datasets HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/doug/secops_playground/app.py", line 304, in manage_datasets
+    return render_template('datasets.html', datasets=datasets, current=current)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/loaders.py", line 138, in load
+    code = environment.compile(source, name, filename)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/environment.py", line 771, in compile
+    self.handle_exception(source=source_hint)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/doug/secops_playground/templates/datasets.html", line 58, in template
+    ds=""
+jinja2.exceptions.TemplateSyntaxError: expected token 'end of statement block', got '='
+100.89.32.15 - - [13/Jun/2025 00:46:41] "GET /datasets?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+100.89.32.15 - - [13/Jun/2025 00:46:41] "GET /datasets?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+100.89.32.15 - - [13/Jun/2025 00:46:41] "GET /datasets?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+100.89.32.15 - - [13/Jun/2025 00:47:21] "[35m[1mGET /datasets HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/doug/secops_playground/app.py", line 304, in manage_datasets
+    return render_template('datasets.html', datasets=datasets, current=current)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/loaders.py", line 138, in load
+    code = environment.compile(source, name, filename)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/environment.py", line 771, in compile
+    self.handle_exception(source=source_hint)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/doug/secops_playground/templates/datasets.html", line 58, in template
+    ds=""
+jinja2.exceptions.TemplateSyntaxError: expected token 'end of statement block', got '='
+100.89.32.15 - - [13/Jun/2025 00:47:21] "[36mGET /datasets?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [13/Jun/2025 00:47:21] "[36mGET /datasets?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+100.89.32.15 - - [13/Jun/2025 00:47:21] "[36mGET /datasets?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+100.89.32.15 - - [13/Jun/2025 00:48:31] "[35m[1mGET /datasets HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/doug/secops_playground/app.py", line 304, in manage_datasets
+    return render_template('datasets.html', datasets=datasets, current=current)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/loaders.py", line 138, in load
+    code = environment.compile(source, name, filename)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/environment.py", line 771, in compile
+    self.handle_exception(source=source_hint)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/doug/secops_playground/templates/datasets.html", line 58, in template
+    ds=""
+jinja2.exceptions.TemplateSyntaxError: expected token 'end of statement block', got '='
+100.89.32.15 - - [13/Jun/2025 00:48:31] "[36mGET /datasets?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [13/Jun/2025 00:48:31] "[36mGET /datasets?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+100.89.32.15 - - [13/Jun/2025 00:48:31] "[36mGET /datasets?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+100.89.32.15 - - [13/Jun/2025 00:48:32] "[35m[1mGET /datasets HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/doug/secops_playground/app.py", line 304, in manage_datasets
+    return render_template('datasets.html', datasets=datasets, current=current)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/loaders.py", line 138, in load
+    code = environment.compile(source, name, filename)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/environment.py", line 771, in compile
+    self.handle_exception(source=source_hint)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/doug/secops_playground/templates/datasets.html", line 58, in template
+    ds=""
+jinja2.exceptions.TemplateSyntaxError: expected token 'end of statement block', got '='
+100.89.32.15 - - [13/Jun/2025 00:48:32] "[36mGET /datasets?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [13/Jun/2025 00:48:32] "[36mGET /datasets?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+100.89.32.15 - - [13/Jun/2025 00:48:32] "[36mGET /datasets?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+100.89.32.15 - - [13/Jun/2025 00:48:32] "[35m[1mGET /datasets HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/doug/secops_playground/app.py", line 304, in manage_datasets
+    return render_template('datasets.html', datasets=datasets, current=current)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/loaders.py", line 138, in load
+    code = environment.compile(source, name, filename)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/environment.py", line 771, in compile
+    self.handle_exception(source=source_hint)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/doug/secops_playground/templates/datasets.html", line 58, in template
+    ds=""
+jinja2.exceptions.TemplateSyntaxError: expected token 'end of statement block', got '='
+100.89.32.15 - - [13/Jun/2025 00:48:32] "[36mGET /datasets?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [13/Jun/2025 00:48:32] "[36mGET /datasets?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+100.89.32.15 - - [13/Jun/2025 00:48:32] "[36mGET /datasets?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+100.89.32.15 - - [13/Jun/2025 00:49:42] "[35m[1mGET /datasets HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/doug/secops_playground/app.py", line 304, in manage_datasets
+    return render_template('datasets.html', datasets=datasets, current=current)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/loaders.py", line 138, in load
+    code = environment.compile(source, name, filename)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/environment.py", line 771, in compile
+    self.handle_exception(source=source_hint)
+  File "/home/doug/venvs/insightbridge310/lib/python3.10/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/doug/secops_playground/templates/datasets.html", line 58, in template
+    ds=""
+jinja2.exceptions.TemplateSyntaxError: expected token 'end of statement block', got '='
+100.89.32.15 - - [13/Jun/2025 00:49:42] "[36mGET /datasets?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+100.89.32.15 - - [13/Jun/2025 00:49:42] "[36mGET /datasets?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+100.89.32.15 - - [13/Jun/2025 00:49:42] "[36mGET /datasets?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+100.89.32.15 - - [13/Jun/2025 00:52:31] "GET /datasets HTTP/1.1" 200 -
+100.89.32.15 - - [13/Jun/2025 00:54:07] "GET / HTTP/1.1" 200 -
+100.89.32.15 - - [13/Jun/2025 00:54:09] "GET /logs HTTP/1.1" 200 -
+100.89.32.15 - - [13/Jun/2025 00:54:11] "GET /alerts HTTP/1.1" 200 -
+100.89.32.15 - - [13/Jun/2025 00:54:12] "GET /playbooks HTTP/1.1" 200 -
+100.89.32.15 - - [13/Jun/2025 00:54:13] "GET /playbooks HTTP/1.1" 200 -
+100.89.32.15 - - [13/Jun/2025 00:54:14] "GET /simulate HTTP/1.1" 200 -
+100.89.32.15 - - [13/Jun/2025 00:54:15] "GET /upload_pcap HTTP/1.1" 200 -
+100.89.32.15 - - [13/Jun/2025 00:54:17] "GET /flows HTTP/1.1" 200 -
+100.89.32.15 - - [13/Jun/2025 00:54:17] "GET /flows_data?dataset_name=pcap_steam-ihs-discovery_20250612234307 HTTP/1.1" 200 -
+100.89.32.15 - - [13/Jun/2025 00:54:18] "GET /datasets HTTP/1.1" 200 -

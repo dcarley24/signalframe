@@ -1,0 +1,64 @@
+{% extends "base.html" %} {% block title %}Simulate Traffic - SecOps
+Playground{% endblock %} {% block content %}
+<h1 class="text-3xl font-bold mb-6">Simulate Traffic</h1>
+
+<div class="bg-gray-800 p-6 rounded-lg shadow-md">
+    <h2 class="text-xl font-semibold mb-4 text-blue-300">
+        Generate Simulated Security Events
+    </h2>
+    <form method="POST" action="{{ url_for('simulate') }}" class="space-y-4">
+        <div>
+            <label
+                for="sim_type"
+                class="block text-sm font-medium text-gray-300 mb-1"
+                >Simulation Type:</label
+            >
+            <select
+                id="sim_type"
+                name="sim"
+                class="w-full p-2 rounded-md bg-gray-700 border border-gray-600 focus:ring-blue-500 focus:border-blue-500 text-gray-200"
+            >
+                <option value="mixed">Mixed (Random)</option>
+                <option value="login_failed">Login Failed</option>
+                <option value="DoS_HULK">DoS (HULK Attack)</option>
+                <option value="scan">Port Scan</option>
+                <option value="Trojan.Win32">Trojan Activity</option>
+                <option value="BENIGN">Benign Traffic</option>
+            </select>
+        </div>
+        <div>
+            <label
+                for="count"
+                class="block text-sm font-medium text-gray-300 mb-1"
+                >Number of Events (default: 30):</label
+            >
+            <input
+                type="number"
+                id="count"
+                name="count"
+                value="30"
+                min="1"
+                class="w-full p-2 rounded-md bg-gray-700 border border-gray-600 focus:ring-blue-500 focus:border-blue-500 text-gray-200"
+            />
+        </div>
+        <div class="flex space-x-4">
+            <button
+                type="submit"
+                name="action"
+                value="inject"
+                class="px-6 py-2 bg-green-600 text-white font-semibold rounded-md shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-800"
+            >
+                Inject into Database
+            </button>
+            <button
+                type="submit"
+                name="action"
+                value="download"
+                class="px-6 py-2 bg-blue-600 text-white font-semibold rounded-md shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800"
+            >
+                Download as CSV
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}

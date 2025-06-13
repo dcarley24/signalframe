@@ -1,0 +1,24 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.sidebar {
+    width: 220px;
+    min-height: 100vh;
+}
+
+.nav-link {
+    padding: 0.5rem 1rem;
+}
+
+.nav-link:hover {
+    background-color: #495057;
+    color: #fff;
+}
+
+.main-content {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}

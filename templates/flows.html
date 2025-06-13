@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Flows - SecOps Playground</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a202c; /* Dark background */
+            color: #e2e8f0; /* Light text */
+        }
+        .container {
+            max-width: 90%;
+            margin: auto;
+            padding: 2rem;
+        }
+        h1 {
+            color: #63b3ed; /* Blue for headings */
+        }
+        .flash {
+            padding: 0.75rem 1.25rem;
+            margin-bottom: 1rem;
+            border: 1px solid transparent;
+            border-radius: 0.25rem;
+        }
+        .flash.success {
+            background-color: #2f855a;
+            border-color: #38a169;
+            color: #fff;
+        }
+        .flash.danger {
+            background-color: #c53030;
+            border-color: #e53e3e;
+            color: #fff;
+        }
+        .flash.warning {
+            background-color: #d69e2e;
+            border-color: #f6e05e;
+            color: #fff;
+        }
+        .flash.info {
+            background-color: #3182ce;
+            border-color: #4299e1;
+            color: #fff;
+        }
+
+        /* D3.js styles for the force-directed graph */
+        .link {
+            stroke: #999;
+            stroke-opacity: 0.6;
+        }
+
+        .node circle {
+            stroke: #fff;
+            stroke-width: 1.5px;
+            cursor: pointer;
+        }
+
+        .node text {
+            font-size: 10px;
+            fill: #e2e8f0;
+            pointer-events: none;
+            text-shadow: 0 0 3px #000;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+    <div class="container mx-auto p-8">
+        <nav class="flex justify-between items-center py-4 px-6 mb-8 bg-gray-800 rounded-lg shadow-md">
+            <div class="text-2xl font-bold text-blue-400">SecOps Playground</div>
+            <div>
+                <a href="{{ url_for('index') }}" class="text-gray-300 hover:text-blue-300 px-3 py-2 rounded-md">Home</a>
+                <a href="{{ url_for('logs') }}" class="text-gray-300 hover:text-blue-300 px-3 py-2 rounded-md">Logs</a>
+                <a href="{{ url_for('alerts') }}" class="text-gray-300 hover:text-blue-300 px-3 py-2 rounded-md">Alerts</a>
+                <a href="{{ url_for('playbooks') }}" class="text-gray-300 hover:text-blue-300 px-3 py-2 rounded-md">Playbooks</a>
+                <a href="{{ url_for('simulate') }}" class="text-gray-300 hover:text-blue-300 px-3 py-2 rounded-md">Simulate</a>
+                <a href="{{ url_for('upload_pcap') }}" class="text-gray-300 hover:text-blue-300 px-3 py-2 rounded-md">PCAP Upload</a>
+                <a href="{{ url_for('flows') }}" class="text-blue-400 font-semibold px-3 py-2 rounded-md bg-blue-900 bg-opacity-50">Flows</a>
+                <a href="{{ url_for('manage_datasets') }}" class="text-gray-300 hover:text-blue-300 px-3 py-2 rounded-md">Datasets</a>
+            </div>
+        </nav>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="mb-4">
+                    {% for category, message in messages %}
+                        <div class="flash {{ category }} rounded-md shadow-sm">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <h1 class="text-3xl font-bold mb-6">Network Flows</h1>
+
+        <div class="bg-gray-800 p-6 rounded-lg shadow-md mb-8">
+            <h2 class="text-xl font-semibold mb-4 text-blue-300">Select PCAP Dataset</h2>
+            <form method="GET" action="{{ url_for('flows') }}" class="mb-4">
+                <label for="pcap_dataset_select" class="block text-sm font-medium text-gray-300 mb-1">View Flows from:</label>
+                <select id="pcap_dataset_select" name="dataset_name"
+                        class="w-full md:w-1/2 lg:w-1/3 p-2 rounded-md bg-gray-700 border border-gray-600 focus:ring-blue-500 focus:border-blue-500 text-gray-200">
+                    {% if pcap_datasets %}
+                        {% for ds in pcap_datasets %}
+                            <option value="{{ ds }}" {% if ds == current_pcap_dataset %}selected{% endif %}>{{ ds }}</option>
+                        {% endfor %}
+                    {% else %}
+                        <option value="">No PCAP Datasets Available</option>
+                    {% endif %}
+                </select>
+                <button type="submit"
+                        class="ml-4 px-6 py-2 bg-blue-600 text-white font-semibold rounded-md shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800">
+                    Switch View
+                </button>
+            </form>
+
+            <h2 class="text-xl font-semibold mb-4 text-blue-300">Filter Flows</h2>
+            <form method="GET" action="{{ url_for('flows') }}" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Keep the dataset_name in the filter form for persistence -->
+                <input type="hidden" name="dataset_name" value="{{ current_pcap_dataset }}">
+
+                <div>
+                    <label for="src_ip" class="block text-sm font-medium text-gray-300 mb-1">Source IP:</label>
+                    <input type="text" id="src_ip" name="src_ip" value="{{ src_ip }}"
+                           class="w-full p-2 rounded-md bg-gray-700 border border-gray-600 focus:ring-blue-500 focus:border-blue-500 text-gray-200">
+                </div>
+                <div>
+                    <label for="dst_ip" class="block text-sm font-medium text-gray-300 mb-1">Destination IP:</label>
+                    <input type="text" id="dst_ip" name="dst_ip" value="{{ dst_ip }}"
+                           class="w-full p-2 rounded-md bg-gray-700 border border-gray-600 focus:ring-blue-500 focus:border-blue-500 text-gray-200">
+                </div>
+                <div>
+                    <label for="protocol" class="block text-sm font-medium text-gray-300 mb-1">Protocol:</label>
+                    <input type="text" id="protocol" name="protocol" value="{{ protocol }}"
+                           class="w-full p-2 rounded-md bg-gray-700 border border-gray-600 focus:ring-blue-500 focus:border-blue-500 text-gray-200">
+                </div>
+                <div>
+                    <label for="min_packets" class="block text-sm font-medium text-gray-300 mb-1">Min Packets:</label>
+                    <input type="number" id="min_packets" name="min_packets" value="{{ min_packets }}"
+                           class="w-full p-2 rounded-md bg-gray-700 border border-gray-600 focus:ring-blue-500 focus:border-blue-500 text-gray-200">
+                </div>
+                <div class="col-span-full md:col-span-2 lg:col-span-4 flex justify-end">
+                    <button type="submit"
+                            class="px-6 py-2 bg-blue-600 text-white font-semibold rounded-md shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800">
+                        Apply Filters
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="bg-gray-800 p-6 rounded-lg shadow-md mb-8">
+            <h2 class="text-xl font-semibold mb-4 text-blue-300">Flow Visualization</h2>
+            <div id="network-graph" class="w-full overflow-hidden" style="min-height: 500px; background-color: #2d3748; border-radius: 0.5rem;">
+                <!-- D3.js graph will be rendered here -->
+            </div>
+            <p class="text-gray-400 text-sm mt-4">Drag nodes to rearrange. Zoom and pan to explore the network.</p>
+        </div>
+
+
+        <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold mb-4 text-blue-300">Raw Flow Data (Table)</h2>
+            {% if flows %}
+            <div class="overflow-x-auto rounded-md border border-gray-700">
+                <table class="min-w-full divide-y divide-gray-700">
+                    <thead class="bg-gray-700">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider rounded-tl-md">Source IP</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Destination IP</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Protocol</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Source Port</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Destination Port</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Packets</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Bytes</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Start Time</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider rounded-tr-md">End Time</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-gray-800 divide-y divide-gray-700">
+                        {% for flow in flows %}
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">{{ flow[0] }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">{{ flow[1] }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">{{ flow[2] }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">{{ flow[3] if flow[3] is not none else 'N/A' }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">{{ flow[4] if flow[4] is not none else 'N/A' }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">{{ flow[5] }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">{{ flow[6] }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">{{ flow[7] }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">{{ flow[8] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <p class="text-gray-400">No network flow data found matching the criteria. Please upload a PCAP file or adjust filters.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        // D3.js Visualization
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.getElementById('network-graph');
+            // Ensure container has actual dimensions, otherwise D3 will use 0 for width/height
+            const updateDimensions = () => {
+                const width = container.offsetWidth;
+                const height = container.offsetHeight;
+                svg.attr("viewBox", `0 0 ${width} ${height}`);
+                return { width, height };
+            };
+
+            const svg = d3.select("#network-graph").append("svg")
+                .attr("width", "100%")
+                .attr("height", "100%")
+                .attr("viewBox", `0 0 ${container.offsetWidth} ${container.offsetHeight}`)
+                .attr("preserveAspectRatio", "xMidYMid meet");
+
+            const g = svg.append("g"); // Group for zooming and panning
+
+            // Zoom behavior
+            const zoom = d3.zoom()
+                .scaleExtent([0.1, 10])
+                .on("zoom", (event) => {
+                    g.attr("transform", event.transform);
+                });
+            svg.call(zoom);
+
+            // Function to load and render graph for a given dataset
+            function loadGraph(datasetName) {
+                // Clear existing graph elements
+                g.selectAll("*").remove();
+
+                d3.json("{{ url_for('flows_data') }}?dataset_name=" + datasetName).then(data => {
+                    const nodes = data.nodes;
+                    const links = data.links;
+
+                    // If no nodes, display message
+                    if (nodes.length === 0) {
+                        g.append("text")
+                            .attr("x", updateDimensions().width / 2)
+                            .attr("y", updateDimensions().height / 2)
+                            .attr("text-anchor", "middle")
+                            .attr("fill", "#ccc")
+                            .text("No flow data for this dataset.")
+                            .style("font-size", "16px");
+                        return;
+                    }
+
+                    const simulation = d3.forceSimulation(nodes)
+                        .force("link", d3.forceLink(links).id(d => d.id).distance(100))
+                        .force("charge", d3.forceManyBody().strength(-300))
+                        .force("center", d3.forceCenter(updateDimensions().width / 2, updateDimensions().height / 2));
+
+                    const link = g.append("g")
+                        .attr("class", "links")
+                        .selectAll("line")
+                        .data(links)
+                        .enter().append("line")
+                        .attr("stroke-width", d => Math.max(0.5, Math.sqrt(d.value) / 2)) /* Min stroke width */
+                        .attr("class", "link")
+                        .attr("stroke", "#999") // Default stroke
+                        .attr("stroke-opacity", 0.6);
+
+                    const node = g.append("g")
+                        .attr("class", "nodes")
+                        .selectAll("g")
+                        .data(nodes)
+                        .enter().append("g")
+                        .attr("class", "node");
+
+                    node.append("circle")
+                        .attr("r", 8) // Radius of nodes
+                        .attr("fill", "#63b3ed") // Node color
+                        .call(drag(simulation));
+
+                    node.append("text")
+                        .attr("x", 12)
+                        .attr("y", "0.31em")
+                        .text(d => d.id)
+                        .clone(true).lower()
+                        .attr("fill", "none")
+                        .attr("stroke", "black")
+                        .attr("stroke-width", 3); // Outline for better readability
+
+                    simulation.on("tick", () => {
+                        link
+                            .attr("x1", d => d.source.x)
+                            .attr("y1", d => d.source.y)
+                            .attr("x2", d => d.target.x)
+                            .attr("y2", d => d.target.y);
+
+                        node
+                            .attr("transform", d => `translate(${d.x},${d.y})`);
+                    });
+
+                    function drag(simulation) {
+                        function dragstarted(event, d) {
+                            if (!event.active) simulation.alphaTarget(0.3).restart();
+                            d.fx = d.x;
+                            d.fy = d.y;
+                        }
+
+                        function dragged(event, d) {
+                            d.fx = event.x;
+                            d.fy = event.y;
+                        }
+
+                        function dragended(event, d) {
+                            if (!event.active) simulation.alphaTarget(0);
+                            d.fx = null;
+                            d.fy = null;
+                        }
+
+                        return d3.drag()
+                            .on("start", dragstarted)
+                            .on("drag", dragged)
+                            .on("end", dragended);
+                    }
+
+                    // Add tooltips on hover (optional but good for UX)
+                    node.append("title")
+                        .text(d => d.id);
+                }).catch(error => {
+                    console.error("Error loading flows data:", error);
+                    g.append("text")
+                        .attr("x", updateDimensions().width / 2)
+                        .attr("y", updateDimensions().height / 2)
+                        .attr("text-anchor", "middle")
+                        .attr("fill", "#f00")
+                        .text("Error loading graph data.")
+                        .style("font-size", "16px");
+                });
+            }
+
+            // Initial load based on the currently selected dataset (from Flask context)
+            const initialDataset = document.getElementById('pcap_dataset_select').value;
+            if (initialDataset) {
+                loadGraph(initialDataset);
+            } else {
+                 g.append("text")
+                    .attr("x", updateDimensions().width / 2)
+                    .attr("y", updateDimensions().height / 2)
+                    .attr("text-anchor", "middle")
+                    .attr("fill", "#ccc")
+                    .text("No PCAP datasets to display. Upload a PCAP first.")
+                    .style("font-size", "16px");
+            }
+
+
+            // Handle dataset selection change to update the graph
+            document.getElementById('pcap_dataset_select').addEventListener('change', function() {
+                const selectedDataset = this.value;
+                if (selectedDataset) {
+                    // Update the URL to reflect the selected dataset for persistence
+                    const currentUrl = new URL(window.location.href);
+                    currentUrl.searchParams.set('dataset_name', selectedDataset);
+                    window.history.pushState({}, '', currentUrl); // Update URL without reloading
+
+                    // Reload the graph with the new dataset
+                    loadGraph(selectedDataset);
+                }
+            });
+
+            // Update graph dimensions on window resize
+            window.addEventListener('resize', () => {
+                updateDimensions();
+                // Simulation will naturally adjust due to forces, but explicit re-centering might be desired
+                // simulation.force("center", d3.forceCenter(newWidth / 2, newHeight / 2));
+                // simulation.alpha(0.3).restart(); // Restart simulation for adjustment
+            });
+        });
+    </script>
+</body>
+</html>
+
