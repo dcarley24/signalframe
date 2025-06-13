@@ -33,8 +33,7 @@ These instructions will get your SignalFrame application up and running on your 
 * **`venv`**: Python virtual environment module (usually comes with Python 3).
 
 * **`git`**: For cloning the repository.
-
-* **`ffmpeg`**, `v4l-utils`, `pulseaudio`, `alsa-utils`, `xvfb`, `x11-utils`, `libgl1`: Required for potential screen/webcam/audio capture features (though not actively used in the current core functionality, they are common dependencies in a development environment for similar projects).
+`v4l-utils`, `pulseaudio`, `alsa-utils`, `xvfb`, `x11-utils`, `libgl1`: Required for potential screen/webcam/audio capture features (though not actively used in the current core functionality, they are common dependencies in a development environment for similar projects).
 
     ```bash
     sudo apt update && sudo apt install -y \
